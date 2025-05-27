@@ -360,6 +360,27 @@ in them is doable, but the architecture is more manual rather than supported
 by the framework.
 
 
+#### Frontend caching
+
+Although the primary concern with caching is server-side caching to keep the
+pressure on the servers low, if a client-side caching requirement comes up, the
+frontend framework of choice needs to support it nicely.
+
+With React Router v7, caching feature is out of scope, but with Remix as a
+framework tightly based on RRv7, there is a `remix-client-cache` library,
+advertised as _"a powerful and lightweight library made for react-router v7 framework mode to cache your server loader data on the client using clientLoaders. ([source](https://remix.run/resources/remix-client-cache))"_
+
+Next.js has client caching at a route level as one of the [several caching
+mechanisms](https://nextjs.org/docs/app/deep-dive/caching) available.
+
+TanStack has caching built-in into the TanQuery part of the stack, via the
+[`QueryCache`](https://tanstack.com/query/latest/docs/reference/QueryCache)
+storage mechanism, which nicely sits at the API call (query) level, where
+it decides whether to serve the cached data or query the API. This is one
+of the most elegant implementations, and puts TanStack as a serious contender
+for the frontend framework, if it turns out fronted caching will be important.
+
+
 ### Summary
 
 In the early phases of any application development, the customer number is
