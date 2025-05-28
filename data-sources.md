@@ -85,3 +85,8 @@ Users must meet standard [Eligibility requirements](https://developer.ebay.com/a
   * [Selling Integration Guide](https://developer.ebay.com/api-docs/sell/static/selling-ig-landing.html)
 * [eBay API Call Limits](https://developer.ebay.com/develop/get-started/api-call-limits)
 * [Postman Documentation](https://www.postman.com/api-evangelist/ebay/documentation/3bv8oa7/ebay)
+
+
+## [Alt.xyz API](https://developers.alt.xyz/)
+
+_There is no developers section on https://www.alt.xyz/ website, nor is https://developers.alt.xyz/ URL active. It seems there is no public API available here._
