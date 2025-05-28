@@ -57,3 +57,31 @@ That said, recent advances in AI-driven tools are beginning to change this lands
 Web scraping is typically against the terms of service of most websites and may sometimes even violate copyright law. Not that it prevents people from scraping websites in general, and it may have no repercussions for hobby projects or very small-scale businesses that stay under the radar. Still, if a business takes off and becomes successful and popular, unauthorized or illicit data scraping will likely not go unnoticed.
 
 If possible, arranging authorization deals with the respective data owners as soon as it becomes business-feasible may help avoid unnecessary disputes and could even open up the possibility of gaining structured access to the data through an API or via CSV, XML, or JSON data dumps.
+
+---
+
+
+
+## [eBay API](https://developer.ebay.com/)
+
+**NOTE:** Some of the eBay APIs are limited or a public beta releases, with limitations and conditions on their use.
+
+**Sales History data**, which we're interested in, is part of the [Buy APIs](https://developer.ebay.com/api-docs/buy/static/buying-ig-landing.html), specifically the [Marketplace Insights API](https://developer.ebay.com/api-docs/buy/static/api-insights.html). That API allows retrieving eBay sales history information of items sold on eBay for the last 90 days.
+
+Unfortunately, many of the Buy APIs, including the Marketplace Insights API, are a Limited Release with specific requirements. For more information, refer to [API launch stages](https://developer.ebay.com/api-docs/static/versioning.html#stages) in the _Using eBay RESTful APIs Guide_, and the [Buy APIs Requirements](https://developer.ebay.com/api-docs/buy/static/buy-requirements.html) in the _Buying Integration Guide_.
+
+> _"The use of eBay’s Buy APIs in production is **intended for eBay partners only**. You must apply for production access through the eBay Partner Network. Acceptance of applications is based on the proposed business model, as well as a formal agreement to abide by the policies and requirements stipulated by eBay."_
+
+Users must meet standard [Eligibility requirements](https://developer.ebay.com/api-docs/buy/static/buy-requirements.html#ProductionReq), get approvals from eBay support organizations, and sign contracts with eBay to access the Buy APIs in production. See [Production access process](https://developer.ebay.com/api-docs/buy/static/buy-requirements.html#Applying) for additional information and instructions for requesting production access.
+
+#### eBay APIs RESOURCES
+
+* [Using eBay RESTful APIs Guide](https://developer.ebay.com/api-docs/static/ebay-rest-landing.html)
+* [eBay SDKs](https://developer.ebay.com/develop/sdks-and-widgets)
+* [Taxonomy API Overview](https://developer.ebay.com/api-docs/commerce/taxonomy/overview.html)
+* [Buy APIs Overview](https://developer.ebay.com/api-docs/buy/static/buy-overview.html)
+  * [Buying Integration Guide](https://developer.ebay.com/api-docs/buy/static/buying-ig-landing.html)
+* [Selling Apps APIs](https://developer.ebay.com/develop/selling-apps)
+  * [Selling Integration Guide](https://developer.ebay.com/api-docs/sell/static/selling-ig-landing.html)
+* [eBay API Call Limits](https://developer.ebay.com/develop/get-started/api-call-limits)
+* [Postman Documentation](https://www.postman.com/api-evangelist/ebay/documentation/3bv8oa7/ebay)
