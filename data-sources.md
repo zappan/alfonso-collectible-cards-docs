@@ -60,9 +60,10 @@ If possible, arranging authorization deals with the respective data owners as so
 
 ---
 
+## Data Sources with an API
 
 
-## [eBay API](https://developer.ebay.com/)
+### [eBay API](https://developer.ebay.com/)
 
 **NOTE:** Some of the eBay APIs are limited or a public beta releases, with limitations and conditions on their use.
 
@@ -87,6 +88,119 @@ Users must meet standard [Eligibility requirements](https://developer.ebay.com/a
 * [Postman Documentation](https://www.postman.com/api-evangelist/ebay/documentation/3bv8oa7/ebay)
 
 
-## [Alt.xyz API](https://developers.alt.xyz/)
+### [Alt.xyz API](https://developers.alt.xyz/)
 
 _There is no developers section on https://www.alt.xyz/ website, nor is https://developers.alt.xyz/ URL active. It seems there is no public API available here._
+
+
+### [Pokémon TCG API](https://pokemontcg.io/)
+
+The Pokémon Trading Cards Game (TCG) API offers comprehensive information
+about the Pokemon trading cards, including cards and sets information, types,
+and the list of rarities. Card API offers some basic card market data details,
+like average prices, trending price, and the lowest price for the card.
+
+It's a REST API that can be used with or without an API key. API key provides
+higher usage limits, and is obtained through registration at the Developer Portal.
+
+> _The Pokémon TCG Developer Portal lets you manage your account and API Key_
+> _associated with the Pokémon TCG API. Creating an account will get you access_
+> _to higher rate limits and no IP restrictions._
+
+By default, requests are limited to 20,000/day with an API key. For a higher
+rate limit, contact the author via Discord or email to discuss. Without an API
+key, rate limits are at 1,000 requests a day, and a maxium of 30 per minute.
+
+#### Pokémon TCG API RESOURCES
+
+* [Pokémon TCG Developer Portal](https://dev.pokemontcg.io/)
+* [Pokémon TCG API Documentation](https://docs.pokemontcg.io/)
+
+
+### [Sports Card Investor API](https://www.sportscardinvestor.com/)
+
+Sports Card Investor does not publicly advertise or offer an API for accessing
+its data. Their main data tool, Market Movers, is available through web and
+mobile applications, but there is no mention of API access for developers or
+third-party integrations on their official channels or promotional materials.
+
+There is a mention of [Market Movers](https://www.marketmoversapp.com/sci/),
+an application owned by the Sports Card Investor. Market Movers does offer a
+Premium Plan, but still there is no mention of an API, no developers section,
+nor any kind of API documentation available. They don't seem to be in the
+business of selling or providing data, they seem to be in the business of
+offering a consumer application with a collection tracker, price guide, sales
+charts, for-sale listings, and pricing analytics.
+
+_NOTE: The shared note mentioned the existence of API access through a premium
+plan. Unfortunately, there is no mention of the API itself, nor is any
+documentation available to support any kind of assessment._
+
+
+### [Card Hedge API](https://www.cardhedger.com/)
+
+Card Hedge advertises an "enterprise grade sports card & trading card API",
+offering data on over 1.8 million cards, with prices for all major graders,
+and an ability to get real-time price updates and download card data. They
+offer an API or a CSV data dumps. Prices are updated every 5 minutes, and
+a real-time webhook API is advertised.
+
+_NOTE: The shared note included an indication this is a paid API. Unfortunately,
+there is no public documentation available to make a first-hand assessment of
+the API interface, nor is there any pricing communicated publicly. The only
+thing available is the contact form._
+
+
+---
+
+
+## Unofficial APIs & Data Dumps
+
+
+### [Gemrate](https://www.gemrate.com/)
+
+Gemrate offers services centered around population reports, and tracking and
+analyzing card grading trends across major grading companies such as PSA, BGS,
+SGC, and CGC.
+
+It does not publicly advertise or provide access to its data via an API or
+downloadable data exports, nor is there any documentation indicating that
+Gemrate offers a way for developers to programmatically access their data.
+
+What is available is a CSV export option via the website's UI. This data is
+possibly acquireble via a headless browser, and some automation to browse
+through the vast amount of available reports on the site.
+
+
+### [MLB](https://www.mlb.com/) / [NBA](https://www.nba.com/) / [NFL](https://www.nfl.com/) / [NHL](https://www.nhl.com/)
+
+MLB.com / NBA.com / NFL.com / NHL.com don't provide a public, documented API
+for developers for accessing trading card data programmatically. For accessing
+sports collectible and trading card data, there are 3rd party APIs designed to
+provide detailed card information and pricing data.
+
+
+---
+
+
+### No-API Sources
+
+
+### [130point (Unofficial)](https://130point.com/)
+
+There is no indication that 130point.com offers a public API for accessing its
+data. The community discussions also do not reference any developer access or
+integration options. And, the technology used is a classic server-side rendering
+website which doesn't rely on an API, not even internally.
+
+What the site does offer is an eBay sales search, leveraging the eBay API for
+finding cards for sale, and a separate "integrated" search that includes eBay
+plus some other platforms. They also link to [WaxStat](https://www.waxstat.com/)
+for release calendar and their price guide. Of own searchable data, it seems
+the site offers cards checklists, per sports or per athlete, but no pricing
+data is attached to it. It also seems that they don't produce any unique
+datasets that can't be obtained elsewhere.
+
+As cards and card sets search have their unique URLs that can be easily
+constructed, there is an opportunity for downloading the data from the search
+results as CSV through web-scraping techniques.
