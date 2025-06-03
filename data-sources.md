@@ -11,6 +11,15 @@ Data sources providing an official API, whether free or paid, are the best found
 | [eBay API](https://developer.ebay.com/) | Sales data (real-time & historical) | Yes _(Limitations apply)_ | Robust API with filters for sport, card year, and grade. OAuth required. |
 | [Pokémon TCG API](https://pokemontcg.io/) | Non-sports card data (Pokémon) | Yes | Robust and free. Great for Pokémon collectors. |
 
+##### ADDITIONAL SOURCES FOUND DURING RESEARCH
+
+| Source Name | Use Case | API Available | Notes |
+| ----------- | -------- | ------------- | ----- |
+| [Mavin.io](https://www.mavin.io/developers) | price guide and search engine for real-time market value of collectibles, strongly focused on sports cards and trading cards | Yes | aggregates real-time sales data from multiple marketplaces, pricing information based on actual sales |
+| [SportsCardsPro API](https://www.sportscardspro.com/api-documentation) | Prices API, Marketplace API, CSV download | Yes (Paid) | Current & Historic Sports Card Prices, Free PSA, BGS & Ungraded Sports Card Price Guide; OAuth required. |
+| [CardTrader.com](https://www.cardtrader.com/en/docs/api) | online marketplace for trading card games (TCGs) | Yes ([see ToS](https://static.cardtrader.com/en/pages/terms-of-service)) | It caters to both individual collectors and professional retailers. OAuth required |
+| [Cardmarket API](https://help.cardmarket.com/en/cardmarket-api) | peer-to-peer marketplace for TCG enthusiasts | Yes (Paid) | Europe’s largest online marketplace dedicated to trading card games (TCGs); OAuth required; _Currently, not accepting applications for access to the Cardmarket API._ |
+
 ##### NO API FOUND
 
 | Source Name | Use Case | API Available | Notes |
@@ -18,6 +27,7 @@ Data sources providing an official API, whether free or paid, are the best found
 | [Alt.xyz API](https://developers.alt.xyz/) | Historical price trends and card indices | ~Yes~ _(no API found)_ | Strong market analytics and trend data. Requires developer registration. |
 | [Sports Card Investor API](https://www.sportscardinvestor.com/) | Card catalog, images, pricing | ~Yes (Paid)~ _(no API found)_ | API access via premium plan. Good for retail card price lookups. |
 | [Card Hedge API](https://www.cardhedger.com/) | Card prices, grading data, trends | ~Yes (Paid)~ _(no API found)_ | Promising data source for price comps and graded card analytics. |
+
 
 ### Sources with an unofficial API or structured data dumps
 
@@ -47,6 +57,15 @@ Data sources with no API and no structured data dumps pose a range of challenges
 | [COMC](https://www.comc.com/) | Images, inventory, some pricing | No | Data available via website structure; scraping needed. |
 | [FanGraphs](https://www.fangraphs.com/) | Baseball prospecting and advanced stats | No | CSV export and well-structured HTML. Good for scouting. |
 | [Sports Reference](https://www.sports-reference.com/) (BBall&#160;/&#160;Football&#160;/&#160;Hockey) | Player stats, bios, history | No | Well-structured HTML for parsing. |
+
+##### ADDITIONAL SOURCES FOUND DURING RESEARCH
+
+| Source Name | Use Case | API Available | Notes |
+| ----------- | -------- | ------------- | ----- |
+| [SellThePeak](https://sellthepeak.com/) | tools and resources for determining the value of sports cards, especially through accurate eBay Best Offer Accepted prices | No | Ajax-driven, hard to web-scrape; if AJAX calls can be reverse-engineered, there could be a chance |
+| [CardSnoop](https://cardsnoop.com) | sales data across various market places for sports cards | ? (_TBD_) | focuses on sales rather than listings; _Site currently not accessible; could be defunct_ |
+
+
 
 
 #### TECHNICAL ASPECTS OF WEB SCRAPING
@@ -155,7 +174,60 @@ the API interface, nor is there any pricing communicated publicly. The only
 thing available is the contact form._
 
 
----
+#### ADDITIONAL API SOURCES FOUND DURING RESEARCH
+
+### [Mavin.io](https://www.mavin.io/developers)
+
+Mavin.io is designed to help collectors and sellers determine the current
+market value of various items, particularly collectibles. By aggregating
+real-time sales data from multiple marketplaces, Mavin provides users with
+accurate pricing information based on actual sales, rather than just listed
+prices.
+
+Mavin.io offers a RESTful JSON API that allows developers to integrate
+real-time market value data for collectibles into their applications. This API
+provides up-to-date information on current market prices, including high and
+low values, for various collectibles. The API is available at no cost.
+
+
+### [SportsCardsPro API](https://www.sportscardspro.com/api-documentation)
+
+SportsCardsPro is an comprehensive platform dedicated to providing current and
+historic price data for major sports and non-sports collectibles. SportsCardsPro
+covers a broad spectrum of collectibles, including Sports Cards (Baseball,
+Basketball, Football, Hockey, Soccer, UFC, Wrestling, Golf, Tennis, Racing,
+Boxing), Non-Sports Collectibles (Pokémon, Magic: The Gathering, Yu-Gi-Oh!,
+Disney Lorcana, Garbage Pail Kids, etc.), and other Collectibles (Funko Pops,
+Coins, Comic Books, LEGO Sets)
+
+Key Features include real-time price tracking from eBay and its own marketplace
+to provide up-to-date pricing for a wide range of cards, including ungraded and
+graded (PSA, BGS) conditions _(see [FAQ](https://www.sportscardspro.com/faq)
+for details)_. It also offers various analytical tools such as a lot value
+calculator, eBay deal scanner, and item demand reports to assist users in making
+informed decisions.
+
+Developers can integrate SportsCardsPro's data into their applications through
+available API access. For API access, a [commercial license](https://www.sportscardspro.com/sportscardspro-premium?f=api)
+is required
+
+
+### [CardTrader.com](https://www.cardtrader.com/en/docs/api)
+
+CardTrader is a European-based online marketplace specializing in the buying and selling of trading cards from popular games, including: Magic: The Gathering, Pokémon, Yu-Gi-Oh!, Flesh and Blood, Digimon, One Piece, Dragon Ball Super, Cardfight!! Vanguard, My Hero Academia, Disney Lorcana, Star Wars Unlimited, etc.
+
+A standout feature of CardTrader is its "CardTrader Zero" service, which revolutionizes shipping by consolidating all purchases from different sellers worldwide into a single shipment, significantly reducing expenses for buyers. The platform emphasizes original cards and fraud protection, providing buyers with confidence in their purchases.
+
+CardTrader’s API is designed to support trading functionality, including the listing of marketplace products along with pricing information.
+
+
+### [Cardmarket API](https://help.cardmarket.com/en/cardmarket-api)
+
+[Cardmarket](https://www.cardmarket.com/en) is Europe's largest peer-to-peer online marketplace dedicated to trading card games. It supports a wide range of games, including Magic: The Gathering, Pokémon, Yu-Gi-Oh!, Dragon Ball Super, Final Fantasy TCG, Cardfight!! Vanguard, Weiss Schwarz. The platform hosts over 500 million card offers, such as individual cards, boxes, and accessories, facilitating the sale of over 600 million cards to date.
+
+Cardmarket offers an API interface for users to create their own apps for using Cardmarket. Only users with a commercial account can apply for and register 3rd Party apps, which need to be verified by Cardmarket.
+
+_Unfortunately, Cardmarket is not currently accepting new applications for access to the Cardmarket API. Still, it may be worthwhile to reach out and explore potential partnership opportunities._
 
 
 ## Unofficial APIs & Data Dumps
