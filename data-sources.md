@@ -8,12 +8,16 @@ Data sources providing an official API, whether free or paid, are the best found
 
 | Source Name | Use Case | API Available | Notes |
 | ----------- | -------- | ------------- | ----- |
-| [eBay API](https://developer.ebay.com/) | Sales data (real-time & historical) | Yes | Robust API with filters for sport, card year, and grade. OAuth required. |
-| [Alt.xyz API](https://developers.alt.xyz/) | Historical price trends and card indices | Yes | Strong market analytics and trend data. Requires developer registration. |
+| [eBay API](https://developer.ebay.com/) | Sales data (real-time & historical) | Yes _(Limitations apply)_ | Robust API with filters for sport, card year, and grade. OAuth required. |
 | [Pokémon TCG API](https://pokemontcg.io/) | Non-sports card data (Pokémon) | Yes | Robust and free. Great for Pokémon collectors. |
-| [Sports Card Investor API](https://www.sportscardinvestor.com/) | Card catalog, images, pricing | Yes (Paid) | API access via premium plan. Good for retail card price lookups. |
-| [Card Hedge API](https://www.cardhedger.com/) | Card prices, grading data, trends | Yes (Paid) | Promising data source for price comps and graded card analytics. |
 
+##### NO API FOUND
+
+| Source Name | Use Case | API Available | Notes |
+| ----------- | -------- | ------------- | ----- |
+| [Alt.xyz API](https://developers.alt.xyz/) | Historical price trends and card indices | ~Yes~ _(no API found)_ | Strong market analytics and trend data. Requires developer registration. |
+| [Sports Card Investor API](https://www.sportscardinvestor.com/) | Card catalog, images, pricing | ~Yes (Paid)~ _(no API found)_ | API access via premium plan. Good for retail card price lookups. |
+| [Card Hedge API](https://www.cardhedger.com/) | Card prices, grading data, trends | ~Yes (Paid)~ _(no API found)_ | Promising data source for price comps and graded card analytics. |
 
 ### Sources with an unofficial API or structured data dumps
 
