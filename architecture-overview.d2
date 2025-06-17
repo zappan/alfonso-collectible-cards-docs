@@ -1,0 +1,135 @@
+# #################################
+# ##  https://play.d2lang.com/  ###
+# #################################
+
+vars: {
+  d2-config: {
+    # layout-engine: elk
+    # Terminal theme code
+    # theme-id: 300
+  }
+}
+
+grid-rows: 3
+
+classes: {
+  row: {
+    label: ""
+    style.opacity: 0
+  }
+  gap: {
+    label: ""
+    style.opacity: 0
+    width: 118
+  }
+  minigap: {
+    label: ""
+    style.opacity: 0
+    width: 50
+  }
+  db: {
+    shape: cylinder
+  }
+  component: {
+    height: 133
+  }
+  stroke: {
+    style.stroke-dash: 7
+  }
+}
+
+row1: {
+  class: [row]
+}
+row2: {
+  class: [row]
+}
+row3: {
+  class: [row]
+  grid-columns: 5
+}
+
+row1.ExtData: {
+  label: External Data Sources
+  shape: cloud
+  grid-columns: 6
+}
+
+row1.ExtData.Api1: {
+  label: API 1
+}
+row1.ExtData.Api2: {
+  label: API 2
+}
+row1.ExtData.ApiN: {
+  label: API ...
+}
+row1.ExtData.Website1: {
+  label: Website 1
+}
+row1.ExtData.Website2: {
+  label: Website 2
+}
+row1.ExtData.WebsiteN: {
+  label: Website ...
+}
+
+row2.gap0.class: [gap]
+
+row2.OrchCloud: {
+  label: Data Orchestrator Cloud Hosting Service
+  label.near: bottom-center
+}
+
+row2.OrchCloud.DataOrchestrator: {
+  label: Data Orchestrator
+  class: component
+  width: 600
+}
+
+row2.gap2.class: [gap]
+
+row3.DbCloud: {
+  label: Database Cloud\n Hosting Service
+  label.near: bottom-center
+}
+row3.DbCloud.Db: {
+  label: Card Flipping App\n Master Database
+  class: [db; component]
+}
+
+row3.gap1.class: [minigap]
+
+row3.CardFlippingCloud: {
+  label: Application Cloud\n Hosting Service
+  label.near: bottom-center
+}
+
+row3.CardFlippingCloud.API: {
+  label: Card Flipping API
+  class: component
+}
+
+row3.gap3.class: [minigap]
+
+row3.WebBrowser: {
+  label: Web Browser
+  label.near: bottom-center
+}
+
+row3.WebBrowser.CardFlippingWebApp: {
+  label: "Card Flipping Webapp"
+  shape: package
+  class: component
+}
+
+row2.OrchCloud.DataOrchestrator -> row1.ExtData.Api1: "" {class: stroke}
+row2.OrchCloud.DataOrchestrator -> row1.ExtData.Api2: pulls data from {class: stroke}
+row2.OrchCloud.DataOrchestrator -> row1.ExtData.ApiN: "" {class: stroke}
+row2.OrchCloud.DataOrchestrator -> row1.ExtData.Website1: "" {class: stroke}
+row2.OrchCloud.DataOrchestrator -> row1.ExtData.Website2: scrapes data from {class: stroke}
+row2.OrchCloud.DataOrchestrator -> row1.ExtData.WebsiteN: "" {class: stroke}
+
+row2.OrchCloud.DataOrchestrator -> row3.CardFlippingCloud.API: stores data {class: stroke}
+row3.CardFlippingCloud.API -> row3.DbCloud.Db: stores data into\n / gets data from {class: stroke}
+row3.WebBrowser.CardFlippingWebApp -> row3.CardFlippingCloud.API: gets data from {class: stroke}
