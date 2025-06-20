@@ -20,16 +20,6 @@ In the case of the Card Flipping app, the system architecture can be outlined as
 
 -----
 
-## Application Hosting Platform and Infrastructure
-
-In early-stage startups, there’s a balance between using lightweight tools and fully future-proofing the setup. For cloud hosting, it’s easy to think that one of the big three Infrastructure as a Service (IaaS) platforms (AWS, Azure, GCP) is the best choice for both current and future needs.
-
-Choosing one comes with a cost. Those platforms provide building blocks to create your own cloud infrastructure, from networking and storage to compute resources. But building it right takes time and expertise. Sure, it can be built in a simpler form initially, and redone later, but then there isn’t much difference between IaaS and Platform as a Service (PaaS) providers. With PaaS providers, the entire infrastructure can be set up in just a few clicks, whereas IaaS requires someone on the team to configure and maintain even the most basic infrastructure.
-
-It’s recommended to start with one of the PaaS providers. This can save time and resources early on, when the focus is on validating the concept and finding product-market fit. Even if particular PaaS services seem relatively expensive, the overall operating cost will be significantly lower than that of managing your own cloud infrastructure. That remains the case until the business reaches a stage where owning infrastructure is justified, whether due to security, compliance, or scaling needs.
-
------
-
 ## Application Stack
 
 For this kind of application, there’s a strong preference towards a TypeScript/JavaScript stack for developing the whole application — Node.js on the backend, and React-based technologies on the frontend.
@@ -44,9 +34,15 @@ All three are solid frameworks, and there’s no “bad” choice among them. Ul
 
 ### Frontend Stack
 
+The application is primarily intended for mobile use, but desktop accessibility is also important. To meet this requirement while keeping initial development lean, the first version will be built as a **Progressive Web Application (PWA)**. This approach enables support for both mobile and desktop platforms with a single codebase, reducing the total development effort and cost.
+
+PWAs provide a responsive design that works well across screen sizes and devices. On mobile, they can offer native-like features such as offline access, background synchronization, push notifications, and cross-platform compatibility, all without relying on app store distribution.
+
 Similar to the backend, any of the major contemporary frontend frameworks is suitable for this kind of application. We identified a preference for React-based frameworks during our research phase, and there are a few contenders in this space: React Router v7, Next.js and TanStack.
 
 Out of those three, it's hard to make a mistake. It boils down to what the dev team is most experienced with and comfortable using. Developer expertise matters the most when it comes to moving fast and delivering, as all of them are more than suitable for this type of application.
+
+As the product evolves, native iOS and Android apps may be considered, particularly if platform-specific features or performance needs arise that go beyond what PWAs can provide.
 
 -----
 
@@ -98,23 +94,57 @@ However, this technique is still emerging, and accuracy is not yet guaranteed. B
 
 -----
 
+## Cloud Infrastructure and Application Hosting
+
+In early-stage startups, there’s a balance between using lightweight tools and fully future-proofing the setup. For cloud hosting, it’s easy to think that one of the big three Infrastructure as a Service (IaaS) cloud platforms (AWS, Azure, GCP) is the best choice for both current and future needs.
+
+Choosing one comes with a cost. Those platforms provide building blocks to create your own cloud infrastructure, from networking and storage to compute resources. But building it right takes time and expertise. Sure, it can be built in a simpler form initially, and redone later, but then there isn’t much difference between IaaS and Platform as a Service (PaaS) providers. With PaaS providers, the entire infrastructure can be set up in just a few clicks, whereas IaaS requires someone on the team to configure and maintain even the most basic infrastructure.
+
+It’s recommended to start with PaaS. This can save time and resources early on, when the focus is on validating the concept and finding product-market fit. Even if particular PaaS services seem relatively expensive, the overall operating cost will be significantly lower than that of managing your own cloud infrastructure. That remains the case until the business reaches a stage where owning infrastructure is justified, whether due to security, compliance, or scaling needs.
+
+There are multiple application components that need hosting — application (compute), database, file storage (images and other static assets), and the data orchestrator. Each of these components can be hosted on separate PaaS providers or consolidated under a single platform.
+
+- **Application (compute):** There are numerous PaaS options for hosting the application backend, so finding one that meets both pricing and feature requirements should not be a challenge.
+- **Data orchestrator:** This is best hosted on the official cloud platform provided by the chosen orchestration tool.
+- **Database:** Depending on the final database choice, hosting may be through the database vendor’s official cloud, a third-party provider, or as part of the application PaaS.
+- **File storage:** Static assets are typically stored using an object storage service in the cloud.
+
+For application hosting, it’s best to choose a provider that supports running containerized applications, ideally with support for multi-container compositions. This enables the use of sidecar containers, which can be used for local caching or forwarding logs to a log aggregation service. Such architecture allows for efficient container organization and operational flexibility.
+
+Data orchestrators on their official cloud platforms provide optimized, production-grade deployments that are fully managed and hands-off for the development team.
+
+The database is the most critical component to migrate when moving to a different cloud provider, so choosing the right database service from the start is essential. Rather than relying blindly on the PaaS provider’s bundled database offering, it may be wiser to select a stable, dedicated database service such as **Supabase**, **MongoDB Atlas**, or **AWS Aurora**. Doing so can provide greater flexibility and reduce friction if the application needs to be moved to a different hosting provider in the future.
+
+The most common choice for object storage is **AWS S3**, with an alternative in **Backblaze B2** (a dedicated cloud storage provider offering an S3-compatible API at a lower price point). For content delivery (CDN), both services can be used with **Cloudflare CDN**, while S3 can also integrate with **AWS CloudFront**.
+
+-----
+
 ## Team Structure
 
 #### **RECOMMENDED: 3-Person Team**
 
 A sustainable and efficient approach involves a small, focused 3-person team:
 
-- **2x Full-Stack Engineers (JavaScript/TypeScript)**: One stronger in UI/frontend, the other in API/backend and database modeling, but both capable of working independently and owning features end-to-end to minimize bottlenecks. The more experienced team member can support final optimizations in their area of expertise.
+- **2x Full-Stack Engineers (JavaScript/TypeScript)**: One stronger in UI/frontend and PWAs, the other in API/backend and database modeling. Both should be capable of working independently and owning features end-to-end to minimize bottlenecks. The more experienced team member can support final optimizations in their area of expertise.
 - **1x Data Engineer (Python)**: Responsible for data ingestion from APIs and web scraping, managed via a workflow orchestration platform such as Dagster or Airflow.
 
-This team structure enables parallel development while maintaining the flexibility to iterate quickly and delivering production-ready features efficiently.
+This team structure enables parallel development while maintaining the flexibility to iterate quickly and deliver production-ready features efficiently.
 
 #### **COMPACT: 2-Person Team**
 
 A more compact 2-person team is feasible, but demanding. It requires both individuals to be highly efficient, well-coordinated, and comfortable with overlapping responsibilities.
 
-- **1x Full-Stack Engineer**: Primarily responsible for the web application. Equally strong in frontend/UI, backend API design, and database modeling. Highly proficient in JavaScript/TypeScript.
-- **1x Backend/Data Engineer**: Responsible for data ingestion from source APIs and web scraping, managing orchestration pipelines, and ideally capable of implementing backend API endpoints for data ingestion. Proficiency in both Python and JavaScript/TypeScript is required.
+**Variation A:**
+
+- **1x Full-Stack Engineer**: Primarily responsible for the web application. Equally strong in frontend/UI, backend API design, and database modeling. Highly proficient in JavaScript/TypeScript. Significant experience with PWAs is crucial.
+- **1x Backend/Data Engineer**: Responsible for ingesting data from source APIs and web scraping, and for managing orchestration pipelines. Ideally also capable of implementing backend API endpoints, at a minimum to support data ingestion and potentially more broadly across the backend. Proficiency in both Python and JavaScript/TypeScript is required.
+
+**Variation B:**
+
+- **1x Full-Stack Engineer**: Primarily responsible for the web application. Expert in frontend/UI and PWA application development, and competent in extending the backend API and database model, following the structure defined by the backend/data engineer. Highly proficient in JavaScript/TypeScript.
+- **1x Backend/Data Engineer**: Expert in API design, database modeling, and implementing Node.js backend API. Responsible for managing orchestration pipelines and for ingesting data from source APIs and web scraping. Proficiency in both Python and JavaScript/TypeScript is required, along with experience in REST API design.
+
+These variations offer a bit of flexibility with the candidates’ skill-set when interviewing and selecting the team. The main difference is which of the two engineers will hold the primary responsibility of designing the backend API and the database model, while the other one should still be capable filling in the missing details required to do their piece of work, either data ingestion, or the consumer application, by following the established API organization and structure.
 
 This compact setup minimizes headcount in the early stages, but demands above-average engineers with broad expertise and the ability to take full ownership of their respective areas.
 
